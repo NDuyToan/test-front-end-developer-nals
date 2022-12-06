@@ -1,15 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Button } from "antd";
+import Card from "../components/Card";
+import type { BlogType } from "../services/data";
+import { fetchBlogs } from "../store/blog/slice";
+import styles from "./HomePage.module.scss";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
+  const { blogs, status, error } = useSelector((state: any) => state.blog);
+  const dispatch = useDispatch<any>();
+
+  useEffect(() => {
+    dispatch(fetchBlogs()).unwrap();
+  }, [dispatch]);
+
   return (
     <>
-      {" "}
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae
-        inventore sapiente numquam excepturi optio ipsum praesentium perferendis
-        veritatis perspiciatis et amet facere placeat obcaecati odit ab est non,
-        maxime animi!
-      </p>
+      {status === "loading" && <div className={styles.loading}></div>}
+      {!error && status !== "loading" && blogs.length === 0 && (
+        <div className={styles.noData}>
+          <p>No Blog available</p>
+          <Button type="primary" size="large">
+            Add new blog
+          </Button>
+        </div>
+      )}
+      {error && (
+        <div className={styles.msgErr}>
+          <p>{error}</p>
+        </div>
+      )}
+      {blogs &&
+        blogs.length > 0 &&
+        blogs?.map((blog: BlogType) => (
+          <Card
+            key={blog.id}
+            id={blog.id}
+            title={blog.title}
+            desc={blog.content}
+            srcImg={blog.image}
+          />
+        ))}
     </>
   );
 };
