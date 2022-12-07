@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
+import { ConfigProvider } from "antd";
 import "./styles/reset.css";
 import "./styles/index.scss";
 
@@ -19,17 +20,25 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/create" element={<UpdateBlog />}></Route>
-            <Route path="/update" element={<UpdateBlog />}></Route>
-            <Route path="/detail" element={<DetailBlog />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "#00b96b",
+          },
+        }}
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/create" element={<UpdateBlog />}></Route>
+              <Route path="/edit/:id" element={<UpdateBlog />}></Route>
+              <Route path="/detail/:id" element={<DetailBlog />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </ConfigProvider>
     </Provider>
   </React.StrictMode>
 );
