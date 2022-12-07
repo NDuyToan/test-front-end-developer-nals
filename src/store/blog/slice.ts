@@ -1,3 +1,4 @@
+import { RequestParams } from "./../../services/data.d";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { BlogType, SubmitBlog } from "../../services/data";
@@ -33,9 +34,9 @@ const initialState: BlogState = {
 
 export const fetchBlogs = createAsyncThunk(
   "blog/getBlogs",
-  async (_, { rejectWithValue }) => {
+  async (requestParams: RequestParams, { rejectWithValue }) => {
     try {
-      const response = await getBlogsAPI();
+      const response = await getBlogsAPI(requestParams);
       return response;
     } catch (error) {
       return rejectWithValue(MESSAGE_ERROR);

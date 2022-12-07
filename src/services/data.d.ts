@@ -21,3 +21,11 @@ export type PropsType = {
   content: string;
   id: string;
 };
+
+export type RequestParams = {
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  order?: string;
+  search?: string;
+};
