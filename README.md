@@ -44,7 +44,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
     => OK. I use lazy load component
 
 11. Nice to have code deployed to any host (such as Heroku)
-    => Not.
+    => https://NDuyToan.github.io/test-front-end-developer-nals
 
 ==================== Một số ghi chú khác==============
 

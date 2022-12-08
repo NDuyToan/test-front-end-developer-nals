@@ -2,6 +2,7 @@
   "name": "toan-nguyen-nals",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://NDuyToan.github.io/test-front-end-developer-nals/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -30,7 +31,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{js,jsx}'",
-    "lint:fix": "eslint './src/**/*.{js,jsx}' --fix"
+    "lint:fix": "eslint './src/**/*.{js,jsx}' --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -45,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "node-sass": "^8.0.0"
   }
 }
