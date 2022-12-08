@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktoan_nguyen_nals=self.webpackChunktoan_nguyen_nals||[]).push([[831],{7831:function(n,e,t){t.r(e),t.d(e,{default:function(){return r}});t(2791);var o=t(1087),s="NotFound_notFound__mcoSy",u=t(184),r=function(){return(0,u.jsxs)("div",{className:s,children:[(0,u.jsx)("h2",{children:"Nothing to see here!"}),(0,u.jsx)(o.rU,{to:"/",children:"Go to the home page"})]})}}}]);
+//# sourceMappingURL=831.ea88400e.chunk.js.map
