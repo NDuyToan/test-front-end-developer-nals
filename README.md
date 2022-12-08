@@ -1,8 +1,8 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
+
+To install the required libraries, you run:
+
+### `yarn`
 
 In the project directory, you can run:
 
@@ -11,36 +11,42 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+===============Requirements of project===========
 
-### `yarn test`
+1. Having a good project structure.
+   => OK
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Applying linters (such as eslint, tslint, prettier).
+   => OK
 
-### `yarn build`
+3. Having a nice code format and a good naming convention.
+   => OK
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Using component design.
+   => OK
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Using stage management libraries (such as Redux, Redux-saga, Vuex).
+   => OK, use Redux-toolkit, Redux-thunk
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6. Having a high quality of UI/UX, responsiveness and performance.
+   => OK, interface has been responsive on different devices, like laptop, tablet, phone.
 
-### `yarn eject`
+7. Nice to have some loading UI (such as loading spinner or loading skeleton).
+   => OK, In Home page, I use loading spinner. In Create page, Edit page I use loading skeleton.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+8. Nice to do it in typescript and has type declaration.
+   => OK
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+9. Nice to have unit tests.
+   => Not
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+10. Nice to have code lazy loading.
+    => OK. I use lazy load component
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+11. Nice to have code deployed to any host (such as Heroku)
+    => Not.
 
-## Learn More
+==================== Một số ghi chú khác==============
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Vì API không trả về tổng số lượng blog, nên đang để mặc định tổng blog là 50. Vì thế nếu click vào các page 4,5 có thể không có dữ liệu.
+- Khi tạo mới 1 blog, ở phần upload ảnh, đã gửi file ảnh lên, nhưng trên BE lại lưu toàn bộ thông tin file ảnh, nên khi gọi API để lấy thông tin blog, thì trường image bị sai, ảnh không hiển thị được, vì thế em cũng không làm upload ảnh khi edit.
