@@ -8,11 +8,12 @@ import "./styles/index.scss";
 
 import Layout from "./layouts/Layout";
 import reportWebVitals from "./reportWebVitals";
-import NotFound from "./pages/NotFound";
-import UpdateBlog from "./pages/UpdateBlog";
-import DetailBlog from "./pages/DetailBlog";
-import HomePage from "./pages/HomePage";
 import store from "./store";
+
+const DetailBlog = React.lazy(() => import("./pages/DetailBlog"));
+const HomePage = React.lazy(() => import("./pages/HomePage"));
+const UpdateBlog = React.lazy(() => import("./pages/UpdateBlog"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -30,11 +31,46 @@ root.render(
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<HomePage />} />
-              <Route path="/create" element={<UpdateBlog />}></Route>
-              <Route path="/edit/:id" element={<UpdateBlog />}></Route>
-              <Route path="/detail/:id" element={<DetailBlog />}></Route>
-              <Route path="*" element={<NotFound />}></Route>
+              <Route
+                path="/"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <HomePage />
+                  </React.Suspense>
+                }
+              ></Route>
+              <Route
+                path="/create"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <UpdateBlog />
+                  </React.Suspense>
+                }
+              ></Route>
+              <Route
+                path="/edit/:id"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <UpdateBlog />
+                  </React.Suspense>
+                }
+              ></Route>
+              <Route
+                path="/detail/:id"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <DetailBlog />
+                  </React.Suspense>
+                }
+              ></Route>
+              <Route
+                path="*"
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <NotFound />
+                  </React.Suspense>
+                }
+              ></Route>
             </Route>
           </Routes>
         </BrowserRouter>
