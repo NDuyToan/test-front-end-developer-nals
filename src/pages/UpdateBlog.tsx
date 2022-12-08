@@ -17,9 +17,7 @@ const UpdateBlog: React.FC = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { status, blogDetail, isSaving } = useSelector(
-    (state: RootState) => state.blog
-  );
+  const { status, isSaving } = useSelector((state: RootState) => state.blog);
   const { id } = useParams();
 
   useEffect(() => {
@@ -37,6 +35,7 @@ const UpdateBlog: React.FC = () => {
           message.error(error);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, dispatch]);
 
   const propsImage: UploadProps = {
@@ -142,11 +141,7 @@ const UpdateBlog: React.FC = () => {
           >
             <Input.TextArea rows={5} />
           </Form.Item>
-          <Form.Item
-            label="Photo"
-            name="image"
-            // rules={[{ required: true, message: "Please upload Photo!" }]}
-          >
+          <Form.Item label="Photo" name="image">
             <Upload
               {...propsImage}
               listType="picture"

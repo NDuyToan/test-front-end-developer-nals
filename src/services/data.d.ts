@@ -1,4 +1,4 @@
-import type { RcFile, UploadFile } from "antd/es/upload/interface";
+import type { UploadFile } from "antd/es/upload/interface";
 
 export type BlogType = {
   content: string;

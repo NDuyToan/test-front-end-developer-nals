@@ -1,6 +1,5 @@
 import { RequestParams } from "./../../services/data.d";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import type { BlogType, SubmitBlog } from "../../services/data";
 import {
   getBlogsAPI,
@@ -86,7 +85,7 @@ export const blogSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBlogs.pending, (state, action) => {
+      .addCase(fetchBlogs.pending, (state) => {
         if (state.status === "idle") {
           state.status = "loading";
           state.error = "";
@@ -104,22 +103,22 @@ export const blogSlice = createSlice({
           state.error = payload as string;
         }
       })
-      .addCase(createNewBlog.pending, (state, action) => {
+      .addCase(createNewBlog.pending, (state) => {
         state.isSaving = true;
         state.error = "";
       })
-      .addCase(createNewBlog.fulfilled, (state, action) => {
+      .addCase(createNewBlog.fulfilled, (state) => {
         state.isSaving = false;
       })
       .addCase(createNewBlog.rejected, (state, { payload }) => {
         state.isSaving = false;
         state.error = payload as string;
       })
-      .addCase(editBlog.pending, (state, action) => {
+      .addCase(editBlog.pending, (state) => {
         state.isSaving = true;
         state.error = "";
       })
-      .addCase(editBlog.fulfilled, (state, action) => {
+      .addCase(editBlog.fulfilled, (state) => {
         state.isSaving = false;
       })
       .addCase(editBlog.rejected, (state, { payload }) => {
