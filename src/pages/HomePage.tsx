@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Pagination, Form, Input, Select, Row, Col } from "antd";
+import { Button, Pagination, Form, Input, Select, Row, Col, Space } from "antd";
 import { useNavigate } from "react-router-dom";
 import type { PaginationProps } from "antd";
 import CardBlog from "../components/CardBlog";
@@ -58,6 +58,16 @@ const HomePage: React.FC = () => {
     }));
   };
 
+  const onResetSearch = () => {
+    form.resetFields();
+    setRequestParams((prevState: RequestParams) => ({
+      ...prevState,
+      search: "",
+      sortBy: "",
+      order: "",
+    }));
+  };
+
   return (
     <>
       <section className={styles.addNewBlog}>
@@ -79,12 +89,12 @@ const HomePage: React.FC = () => {
           style={{ width: "100%" }}
         >
           <Row style={{ width: "100%" }} gutter={[20, 20]}>
-            <Col span={24} md={{ span: 10 }}>
+            <Col span={24} md={{ span: 8 }}>
               <Form.Item name="search" style={{ width: "100%" }}>
                 <Input placeholder="Enter something to search" />
               </Form.Item>
             </Col>
-            <Col span={24} md={{ span: 10 }}>
+            <Col span={24} md={{ span: 8 }}>
               <Form.Item name="order" style={{ width: "100%" }} initialValue="">
                 <Select>
                   <Select.Option value="">Not sort</Select.Option>
@@ -97,15 +107,24 @@ const HomePage: React.FC = () => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={24} md={{ span: 4 }}>
+            <Col span={24} md={{ span: 8 }}>
               <Form.Item style={{ width: "100%" }}>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  style={{ width: "100%" }}
-                >
-                  Search
-                </Button>
+                <Space>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    style={{ width: "100%" }}
+                  >
+                    Search
+                  </Button>
+                  <Button
+                    danger
+                    style={{ width: "100%" }}
+                    onClick={onResetSearch}
+                  >
+                    Cancel Search
+                  </Button>
+                </Space>
               </Form.Item>
             </Col>
           </Row>
