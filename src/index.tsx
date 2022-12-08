@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ConfigProvider } from "antd";
 import "./styles/reset.css";
@@ -28,7 +28,7 @@ root.render(
           },
         }}
       >
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route
@@ -73,7 +73,7 @@ root.render(
               ></Route>
             </Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </ConfigProvider>
     </Provider>
   </React.StrictMode>
